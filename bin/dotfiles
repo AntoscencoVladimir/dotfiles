@@ -1,0 +1,29 @@
+#!/bin/bash
+# https://github.com/paulmillr/dotfiles/blob/master/symlink-dotfiles.sh
+
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom # ???
+if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
+    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+fi
+
+dotfiles="$HOME/.dotfiles"
+
+if [[ -d "$dotfiles" ]]; then
+  echo "Symlinking dotfiles from $dotfiles"
+else
+  echo "$dotfiles does not exist"
+  exit 1
+fi
+
+link() {
+  from="$1"
+  to="$2"
+  echo "$from -> $to"
+  rm -f "$to"
+  ln -s "$from" "$to"
+}
+
+for location in $(find $dotfiles -type f); do
+  file="${location#$dotfiles/}"
+  link "$location" "$HOME/$file"
+done
