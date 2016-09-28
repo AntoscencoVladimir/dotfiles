@@ -1,5 +1,4 @@
 #!/bin/bash
-# https://github.com/paulmillr/dotfiles/blob/master/symlink-dotfiles.sh
 
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom # ???
 if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
@@ -23,7 +22,7 @@ link() {
   ln -s "$from" "$to"
 }
 
-for location in $(find $dotfiles -type f); do
+for location in $(find $dotfiles -type f -not -iwholename '*.git*'); do
   file="${location#$dotfiles/}"
   link "$location" "$HOME/$file"
 done
