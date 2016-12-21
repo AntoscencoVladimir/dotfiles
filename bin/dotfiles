@@ -1,16 +1,22 @@
 #!/bin/bash
 
-echo Install oh-my-zsh
 #https://github.com/robbyrussell/oh-my-zsh
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+    echo install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-echo Install plugins
 # https://github.com/zsh-users/zsh-autosuggestions
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom # ???
 if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
+    echo install zsh autosuggestion
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+fi
+
+# https://github.com/tmux-plugins/tpm
+if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    echo install tmux plugin manager
+    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
 dotfiles="$HOME/.dotfiles"

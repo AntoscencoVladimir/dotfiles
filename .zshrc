@@ -58,3 +58,8 @@ alias mc='mc -S modarin256'
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 export EDITOR=vim
+
+if [[ -f ~/.dircolors ]] ; 
+then 
+    eval $(dircolors ~/.dircolors)
+fi
