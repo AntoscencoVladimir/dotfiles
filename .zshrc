@@ -59,7 +59,7 @@ alias mc='mc -S modarin256'
 
 export EDITOR=vim
 
-if [[ -f ~/.dircolors ]] ; 
+if [[ ( -f ~/.dircolors ) && ( -x "$(command -v dircolors)" ) ]] ; 
 then 
     eval $(dircolors ~/.dircolors)
 fi
