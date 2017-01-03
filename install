@@ -39,3 +39,9 @@ for location in $(find $dotfiles/home -type f); do
   file="${location#$dotfiles/home}"
   link "$location" "$HOME/$file"
 done
+
+PHPSTORMDIR=/Users/esprit/Library/Preferences/PhpStorm2016.3
+
+if [[ ! -d "$PHPSTORMDIR/colors" ]]; then
+    ln -s $dotfiles/phpstorm/colors $PHPSTORMDIR/colors
+fi
