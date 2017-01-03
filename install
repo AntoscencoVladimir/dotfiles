@@ -40,8 +40,12 @@ for location in $(find $dotfiles/home -type f); do
   link "$location" "$HOME/$file"
 done
 
-PHPSTORMDIR=/Users/esprit/Library/Preferences/PhpStorm2016.3
+if [ "$(uname)" == "Darwin" ]; then
+    PHPSTORMDIR=$HOME/Library/Preferences/PhpStorm2016.3
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    PHPSTORMDIR=$HOME/.PhpStorm2016.3
+fi
 
-if [[ ! -d "$PHPSTORMDIR/colors" ]]; then
+if [[ -n "$PHPSTORMDIR" && ! -d "$PHPSTORMDIR/colors" ]]; then
     ln -s $dotfiles/phpstorm/colors $PHPSTORMDIR/colors
 fi
