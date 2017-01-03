@@ -43,7 +43,7 @@ done
 if [ "$(uname)" == "Darwin" ]; then
     PHPSTORMDIR=$HOME/Library/Preferences/PhpStorm2016.3
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    PHPSTORMDIR=$HOME/.PhpStorm2016.3
+    PHPSTORMDIR=$HOME/.PhpStorm2016.3/config
 fi
 
 if [[ -n "$PHPSTORMDIR" && ! -d "$PHPSTORMDIR/colors" ]]; then
