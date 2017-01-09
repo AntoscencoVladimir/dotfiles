@@ -49,3 +49,7 @@ fi
 if [[ -n "$PHPSTORMDIR" && ! -d "$PHPSTORMDIR/colors" ]]; then
     ln -s $dotfiles/phpstorm/colors $PHPSTORMDIR/colors
 fi
+
+if [[ -n "$PHPSTORMDIR" && ! -d "$PHPSTORMDIR/keymaps" ]]; then
+    ln -s $dotfiles/phpstorm/keymaps $PHPSTORMDIR/keymaps
+fi
